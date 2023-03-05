@@ -14,8 +14,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 import qrhome.views
+import vercel_app.settings as settings
+from django.conf.urls.static import static
 from django.urls import path
 
 urlpatterns = [
     path("", qrhome.views.index, name="index"),
 ]
+
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
